@@ -25,8 +25,8 @@
           "options": {
             "fileReplacements": [
               {
-                "src": "src/environment.ts",
-                "replaceWith": "src/environment.test.ts"
+                "replace": "src/environment.ts",
+                "with": "src/environment.test.ts"
               }
             ],
             "main": "src/test.ts",
@@ -106,8 +106,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "src": "demo/src/environments/environment.ts",
-                  "replaceWith": "demo/src/environments/environment.prod.ts"
+                  "replace": "demo/src/environments/environment.ts",
+                  "with": "demo/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -175,7 +175,7 @@
             "outputPath": "e2e-app/dist",
             "index": "e2e-app/src/index.html",
             "main": "e2e-app/src/main.ts",
-            "polyfills": "e2e-app/src/polyfills.ts",
+            "polyfills":["zone.js"],
             "tsConfig": "e2e-app/tsconfig.json",
             "assets": [
               "e2e-app/src/favicon.ico"

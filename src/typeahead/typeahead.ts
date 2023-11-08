@@ -311,7 +311,8 @@ export class NgbTypeahead implements ControlValueAccessor,
       this._inputValueBackup = this._elementRef.nativeElement.value;
       const {windowRef} = this._popupService.open();
       this._windowRef = windowRef;
-      this._windowRef.instance.id = this.popupId;
+      this._windowRef.setInput('id', this.popupId);
+      this._windowRef.setInput('popupClass', this.popupClass);
       this._windowRef.instance.selectEvent.subscribe((result: any) => this._selectResultClosePopup(result));
       this._windowRef.instance.activeChangeEvent.subscribe((activeId: string) => this.activeDescendant = activeId);
       this._windowRef.instance.popupClass = this.popupClass;
@@ -357,8 +358,8 @@ export class NgbTypeahead implements ControlValueAccessor,
       const userInputLowerCase = this._inputValueBackup.toLowerCase();
       const formattedVal = this._formatItemForInput(this._windowRef.instance.getActive());
 
-      if (userInputLowerCase === formattedVal.substr(0, this._inputValueBackup.length).toLowerCase()) {
-        this._writeInputValue(this._inputValueBackup + formattedVal.substr(this._inputValueBackup.length));
+      if (userInputLowerCase === formattedVal.substring(0, this._inputValueBackup.length).toLowerCase()) {
+        this._writeInputValue(this._inputValueBackup + formattedVal.substring(this._inputValueBackup.length));
         this._elementRef.nativeElement['setSelectionRange'].apply(
             this._elementRef.nativeElement, [this._inputValueBackup.length, formattedVal.length]);
       } else {

@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, DebugElement, ViewChild} from '@angular/core';
 import {ComponentFixture, fakeAsync, inject, TestBed, tick} from '@angular/core/testing';
-import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 import {merge, Observable, of, OperatorFunction, Subject} from 'rxjs';
 import {debounceTime, filter, map} from 'rxjs/operators';
@@ -985,7 +985,7 @@ class TestComponent {
   selectEventValue: any;
   show = true;
 
-  form = new FormGroup({control: new FormControl('', Validators.required)});
+  form = new UntypedFormGroup({control: new UntypedFormControl('', Validators.required)});
 
   findOutput$: Observable<any[]>;
 
@@ -995,33 +995,28 @@ class TestComponent {
 
   findRef: OperatorFunction<string, readonly any[]>| null | undefined = null;
 
-  find =
-      (text$: Observable<string>) => {
-        const clicks$ = this.click$.pipe(filter(() => !this.typeahead.isPopupOpen()));
-        this.findOutput$ =
-            merge(text$, this.focus$, clicks$).pipe(map(text => this._strings.filter(v => v.startsWith(text))));
-        return this.findOutput$;
-      }
+  find = (text$: Observable<string>) => {
+    const clicks$ = this.click$.pipe(filter(() => !this.typeahead.isPopupOpen()));
+    this.findOutput$ =
+        merge(text$, this.focus$, clicks$).pipe(map(text => this._strings.filter(v => v.startsWith(text))));
+    return this.findOutput$;
+  };
 
-  findFilter =
-      (text$: Observable<string>) => {
-        return text$.pipe(
-            filter(term => term.length > 1), map(text => this._strings.filter(v => v.indexOf(text) > -1)));
-      }
+  findFilter = (text$: Observable<string>) => {
+    return text$.pipe(filter(term => term.length > 1), map(text => this._strings.filter(v => v.indexOf(text) > -1)));
+  };
 
-  findAnywhere =
-      (text$: Observable<string>) => {
-        return text$.pipe(map(text => this._strings.filter(v => v.indexOf(text) > -1)));
-      }
+  findAnywhere = (text$: Observable<string>) => {
+    return text$.pipe(map(text => this._strings.filter(v => v.indexOf(text) > -1)));
+  };
 
   findNothing = (text$: Observable<string>) => { return text$.pipe(map(text => [])); };
 
   findNull = (text$: Observable<string>) => { return text$.pipe(map(text => null)); };
 
-  findObjects =
-      (text$: Observable<string>) => {
-        return text$.pipe(map(text => this._objects.filter(v => v.value.startsWith(text))));
-      }
+  findObjects = (text$: Observable<string>) => {
+    return text$.pipe(map(text => this._objects.filter(v => v.value.startsWith(text))));
+  };
 
   formatter = (obj: {id: number, value: string}) => { return `${obj.id} ${obj.value}`; };
 

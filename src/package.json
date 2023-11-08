@@ -1,5 +1,5 @@
 {
-  "name": "@ng-bootstrap/ng-bootstrap",
+  "name": "@deliverysolutions/ng-bootstrap",
   "version": "$NG_BOOTSTRAP_VERSION",
   "description": "Angular powered Bootstrap",
   "keywords": [
@@ -25,24 +25,21 @@
     "tooltip",
     "typeahead"
   ],
-  "author": "https://github.com/ng-bootstrap/ng-bootstrap/graphs/contributors",
+  "author": "https://github.com/delivery-solutions/ng-bootstrap/graphs/contributors",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ng-bootstrap/ng-bootstrap.git"
+    "url": "git+https://github.com/delivery-solutions/ng-bootstrap.git"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ng-bootstrap/ng-bootstrap/issues"
-  },
-  "homepage": "https://github.com/ng-bootstrap/ng-bootstrap#readme",
+  "homepage": "https://github.com/delivery-solutions/ng-bootstrap#readme",
   "dependencies": {
     "tslib": "^2.3.0"
   },
   "peerDependencies": {
-    "@angular/common": "^13.0.0",
-    "@angular/core": "^13.0.0",
-    "@angular/forms": "^13.0.0",
-    "@angular/localize": "^13.0.0",
+    "@angular/common": "^14.1.0",
+    "@angular/core": "^14.1.0",
+    "@angular/forms": "^14.1.0",
+    "@angular/localize": "^14.1.0",
     "rxjs": "^6.5.3 || ^7.4.0"
   },
   "schematics": "./schematics/collection.json"

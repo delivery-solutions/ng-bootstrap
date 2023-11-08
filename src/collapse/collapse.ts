@@ -4,10 +4,8 @@ import {
   EventEmitter,
   Input,
   NgZone,
-  OnChanges,
   OnInit,
   Output,
-  SimpleChanges,
 } from '@angular/core';
 import {ngbRunTransition} from '../util/transition/ngbTransition';
 import {ngbCollapsingTransition} from '../util/transition/ngbCollapseTransition';
@@ -17,7 +15,7 @@ import {NgbCollapseConfig} from './collapse-config';
  * A directive to provide a simple way of hiding and showing elements on the page.
  */
 @Directive({selector: '[ngbCollapse]', exportAs: 'ngbCollapse'})
-export class NgbCollapse implements OnInit, OnChanges {
+export class NgbCollapse implements OnInit {
   /**
    * If `true`, collapse will be animated.
    *
@@ -29,9 +27,24 @@ export class NgbCollapse implements OnInit, OnChanges {
   @Input() animation;
 
   /**
+   * Flag used to track if the collapse setter is invoked during initialization
+   * or not. This distinction is made in order to avoid running the transition during initialization.
+   */
+  private _afterInit = false;
+
+  private _isCollapsed = false;
+  /**
    * If `true`, will collapse the element or show it otherwise.
    */
-  @Input('ngbCollapse') collapsed = false;
+  @Input('ngbCollapse')
+  set collapsed(isCollapsed: boolean) {
+    if (this._isCollapsed !== isCollapsed) {
+      this._isCollapsed = isCollapsed;
+      if (this._afterInit) {
+        this._runTransitionWithEvents(isCollapsed, this.animation);
+      }
+    }
+  }
 
   @Output() ngbCollapseChange = new EventEmitter<boolean>();
 
@@ -54,12 +67,9 @@ export class NgbCollapse implements OnInit, OnChanges {
     this.animation = config.animation;
   }
 
-  ngOnInit() { this._runTransition(this.collapsed, false); }
-
-  ngOnChanges({collapsed}: SimpleChanges) {
-    if (!collapsed.firstChange) {
-      this._runTransitionWithEvents(this.collapsed, this.animation);
-    }
+  ngOnInit() {
+    this._runTransition(this._isCollapsed, false);
+    this._afterInit = true;
   }
 
   /**
@@ -70,10 +80,9 @@ export class NgbCollapse implements OnInit, OnChanges {
    *
    * @since 8.0.0
    */
-  toggle(open: boolean = this.collapsed) {
+  toggle(open: boolean = this._isCollapsed) {
     this.collapsed = !open;
-    this.ngbCollapseChange.next(this.collapsed);
-    this._runTransitionWithEvents(this.collapsed, this.animation);
+    this.ngbCollapseChange.next(this._isCollapsed);
   }
 
   private _runTransition(collapsed: boolean, animation: boolean) {

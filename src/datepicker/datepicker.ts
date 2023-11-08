@@ -158,7 +158,7 @@ export class NgbDatepickerContent {
     </div>
 
     <div class="ngb-dp-content" [class.ngb-dp-months]="!contentTemplate" #content>
-      <ng-template [ngTemplateOutlet]="contentTemplate?.templateRef || defaultContentTemplate"></ng-template>
+      <ng-template [ngTemplateOutlet]="contentTemplate.templateRef || defaultContentTemplate"></ng-template>
     </div>
 
     <ng-template [ngTemplateOutlet]="footerTemplate"></ng-template>

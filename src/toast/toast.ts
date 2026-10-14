@@ -29,7 +29,7 @@ import {ngbToastFadeInTransition, ngbToastFadeOutTransition} from './toast-trans
  *
  * @since 5.0.0
  */
-@Directive({selector: '[ngbToastHeader]'})
+@Directive({standalone: false, selector: '[ngbToastHeader]'})
 export class NgbToastHeader {
 }
 
@@ -40,6 +40,7 @@ export class NgbToastHeader {
  * @since 5.0.0
  */
 @Component({
+  standalone: false,
   selector: 'ngb-toast',
   exportAs: 'ngbToast',
   encapsulation: ViewEncapsulation.None,

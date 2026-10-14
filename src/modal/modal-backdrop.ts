@@ -7,6 +7,7 @@ import {ngbRunTransition} from '../util/transition/ngbTransition';
 import {reflow} from '../util/util';
 
 @Component({
+  standalone: false,
   selector: 'ngb-modal-backdrop',
   encapsulation: ViewEncapsulation.None,
   template: '',

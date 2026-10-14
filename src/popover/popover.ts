@@ -33,6 +33,7 @@ import {NgbPopoverConfig} from './popover-config';
 let nextId = 0;
 
 @Component({
+  standalone: false,
   selector: 'ngb-popover-window',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
@@ -64,7 +65,7 @@ export class NgbPopoverWindow {
 /**
  * A lightweight and extensible directive for fancy popover creation.
  */
-@Directive({selector: '[ngbPopover]', exportAs: 'ngbPopover'})
+@Directive({standalone: false, selector: '[ngbPopover]', exportAs: 'ngbPopover'})
 export class NgbPopover implements OnInit, OnDestroy, OnChanges {
   static ngAcceptInputType_autoClose: boolean | string;
 

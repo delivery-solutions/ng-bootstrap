@@ -14,9 +14,13 @@
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
     "strict": true,
-    "types": ["jasmine"]
+    "types": ["jasmine", "node"]
   },
   "include": [
     "./**/*.ts"
+  ],
+  "exclude": [
+    "./**/*.spec.ts",
+    "./utils/testing.ts"
   ]
 }

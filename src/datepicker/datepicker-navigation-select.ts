@@ -15,6 +15,7 @@ import {toInteger} from '../util/util';
 import {NgbDatepickerI18n} from './datepicker-i18n';
 
 @Component({
+  standalone: false,
   selector: 'ngb-datepicker-navigation-select',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,

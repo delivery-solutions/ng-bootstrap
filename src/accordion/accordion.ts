@@ -48,7 +48,7 @@ export interface NgbPanelHeaderContext {
  *
  * @since 4.1.0
  */
-@Directive({selector: 'ng-template[ngbPanelHeader]'})
+@Directive({standalone: false, selector: 'ng-template[ngbPanelHeader]'})
 export class NgbPanelHeader {
   constructor(public templateRef: TemplateRef<any>) {}
 }
@@ -58,7 +58,7 @@ export class NgbPanelHeader {
  *
  * You can also use [`NgbPanelHeader`](#/components/accordion/api#NgbPanelHeader) to customize the full panel header.
  */
-@Directive({selector: 'ng-template[ngbPanelTitle]'})
+@Directive({standalone: false, selector: 'ng-template[ngbPanelTitle]'})
 export class NgbPanelTitle {
   constructor(public templateRef: TemplateRef<any>) {}
 }
@@ -66,7 +66,7 @@ export class NgbPanelTitle {
 /**
  * A directive that wraps the accordion panel content.
  */
-@Directive({selector: 'ng-template[ngbPanelContent]'})
+@Directive({standalone: false, selector: 'ng-template[ngbPanelContent]'})
 export class NgbPanelContent {
   constructor(public templateRef: TemplateRef<any>) {}
 }
@@ -74,7 +74,7 @@ export class NgbPanelContent {
 /**
  * A directive that wraps an individual accordion panel with title and collapsible content.
  */
-@Directive({selector: 'ngb-panel'})
+@Directive({standalone: false, selector: 'ngb-panel'})
 export class NgbPanel implements AfterContentChecked {
   /**
    *  If `true`, the panel is disabled an can't be toggled.
@@ -175,7 +175,7 @@ export interface NgbPanelChangeEvent {
   preventDefault: () => void;
 }
 
-@Directive({selector: '[ngbRef]'})
+@Directive({standalone: false, selector: '[ngbRef]'})
 export class NgbRefDirective implements OnInit, OnDestroy {
   @Output() ngbRef = new EventEmitter<HTMLElement | null>();
   constructor(private _El: ElementRef) {}
@@ -192,6 +192,7 @@ export class NgbRefDirective implements OnInit, OnDestroy {
  * headers.
  */
 @Component({
+  standalone: false,
   selector: 'ngb-accordion',
   exportAs: 'ngbAccordion',
   encapsulation: ViewEncapsulation.None,
@@ -446,6 +447,7 @@ export class NgbAccordion implements AfterContentChecked {
  * @since 4.1.0
  */
 @Directive({
+  standalone: false,
   selector: 'button[ngbPanelToggle]',
   host: {
     'type': 'button',

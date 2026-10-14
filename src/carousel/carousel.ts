@@ -38,7 +38,7 @@ let nextId = 0;
 /**
  * A directive that wraps the individual carousel slide.
  */
-@Directive({selector: 'ng-template[ngbSlide]'})
+@Directive({standalone: false, selector: 'ng-template[ngbSlide]'})
 export class NgbSlide {
   /**
    * Slide id that must be unique for the entire document.
@@ -63,6 +63,7 @@ export class NgbSlide {
  * Allows to set intervals, change the way user interacts with the slides and provides a programmatic API.
  */
 @Component({
+  standalone: false,
   selector: 'ngb-carousel',
   exportAs: 'ngbCarousel',
   changeDetection: ChangeDetectionStrategy.OnPush,

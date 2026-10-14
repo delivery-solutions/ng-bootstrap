@@ -18,6 +18,7 @@ import {ngbRunTransition, NgbTransitionOptions} from '../util/transition/ngbTran
 import {NgbNav, NgbNavItem} from './nav';
 
 @Directive({
+  standalone: false,
   selector: '[ngbNavPane]',
   host: {
     '[id]': 'item.panelDomId',
@@ -41,6 +42,7 @@ export class NgbNavPane {
  * @since 5.2.0
  */
 @Component({
+  standalone: false,
   selector: '[ngbNavOutlet]',
   host: {'[class.tab-content]': 'true'},
   encapsulation: ViewEncapsulation.None,

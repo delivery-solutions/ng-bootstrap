@@ -25,6 +25,7 @@ import {ngbAlertFadingTransition} from './alert-transition';
  * It supports several alert types and can be dismissed.
  */
 @Component({
+  standalone: false,
   selector: 'ngb-alert',
   exportAs: 'ngbAlert',
   changeDetection: ChangeDetectionStrategy.OnPush,

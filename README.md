@@ -30,8 +30,7 @@ Please check all components we have in action at https://ng-bootstrap.github.io
 
 ## Dependencies
 
-The only two dependencies are [Angular](https://angular.io) and [Bootstrap 4](https://getbootstrap.com) CSS.
-The supported versions are:
+The only two dependencies are [Angular](https://angular.io/) and [Bootstrap 4](https://getbootstrap.com/) CSS. The supported upstream versions are:
 
 | ng-bootstrap | Angular | Bootstrap CSS |
 | ------------ | ------- | ------------- |
@@ -47,9 +46,20 @@ The supported versions are:
 | 11.0.0       | 13.0.0  | 4.6.0         |
 | 12.0.0-beta.x| 13.0.0  | 5.0.0         |
 
+### Delivery Solutions fork
+
+This repository also publishes the separately versioned `@deliverysolutions/ng-bootstrap` fork. Fork version `2.0.0` supports Angular `22.2.x` and Bootstrap CSS `4.6.1`; its toolchain requires Node.js `>=22.22.3`.
+
+| @deliverysolutions/ng-bootstrap | Angular | Bootstrap CSS |
+| ------------------------------- | ------- | ------------- |
+| 1.0.0                           | 15.2.x  | 4.6.1         |
+| 2.0.0                           | 22.2.x  | 4.6.1         |
+
+Applications that must remain on an older Angular version should use the `1.0.0` baseline and create their branch from commit `ddc49d3e`; do not upgrade those applications to fork version `2.0.0`.
+
 ## Installation
 
-We strongly recommend using [Angular CLI](https://cli.angular.io) for setting up a new project. If you have an Angular &ge; 9 CLI project, you could simply use our schematics to add ng-bootstrap library to it. 
+We strongly recommend using [Angular CLI](https://cli.angular.io/) for setting up a new project. If you have an Angular &ge; 9 CLI project, you could simply use our schematics to add the upstream ng-bootstrap library to it.
 
 Just run the following:
 
@@ -57,15 +67,23 @@ Just run the following:
 ng add @ng-bootstrap/ng-bootstrap
 ```
 
-It will install ng-bootstrap for the default application specified in your `angular.json`.
-If you have multiple projects and you want to target a specific application, you could specify the `--project` option:
+It will install ng-bootstrap for the default application specified in your `angular.json`. If you have multiple projects and you want to target a specific application, you could specify the `--project` option:
 
 ```shell
 ng add @ng-bootstrap/ng-bootstrap --project myProject
 ```
 
-If you prefer not to use schematics and install everything manually, please refer to the 
-[manual installation instructions](https://ng-bootstrap.github.io/#/getting-started#installation) on our website. 
+If you prefer not to use schematics and install everything manually, please refer to the [manual installation instructions](https://ng-bootstrap.github.io/#/getting-started#installation) on our website.
+
+### Delivery Solutions fork installation
+
+To install this repository's Angular 22 fork and its Bootstrap CSS dependency, run:
+
+```shell
+npm install @deliverysolutions/ng-bootstrap@2.0.0 bootstrap@4.6.1
+```
+
+Import the component modules you use from `@deliverysolutions/ng-bootstrap` into your Angular application modules. The upstream `ng add @ng-bootstrap/ng-bootstrap` schematic installs the upstream package, not this fork.
 
 ## Supported browsers
 

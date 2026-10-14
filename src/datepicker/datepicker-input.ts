@@ -47,11 +47,12 @@ import {isString} from '../util/util';
  * Manages interaction with the input field itself, does value formatting and provides forms integration.
  */
 @Directive({
+  standalone: false,
   selector: 'input[ngbDatepicker]',
   exportAs: 'ngbDatepicker',
   host: {
-    '(input)': 'manualDateChange($event.target.value)',
-    '(change)': 'manualDateChange($event.target.value, true)',
+    '(input)': 'manualDateChange($any($event.target).value)',
+    '(change)': 'manualDateChange($any($event.target).value, true)',
     '(focus)': 'onFocus()',
     '(blur)': 'onBlur()',
     '[disabled]': 'disabled'

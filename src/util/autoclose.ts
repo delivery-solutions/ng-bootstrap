@@ -62,7 +62,7 @@ export function ngbAutoClose(
       const closeableClicks$ = fromEvent<MouseEvent>(document, 'mouseup')
                                    .pipe(
                                        withLatestFrom(mouseDowns$), filter(([_, shouldClose]) => shouldClose), delay(0),
-                                       takeUntil(closed$)) as Observable<MouseEvent>;
+                         takeUntil(closed$));
 
 
       race([

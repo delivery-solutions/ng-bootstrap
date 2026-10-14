@@ -62,7 +62,7 @@ if (typeof Element !== 'undefined' && !Element.prototype.closest) {
       if (el.matches(s)) {
         return el;
       }
-      el = el.parentElement || el.parentNode;
+      el = (el.parentElement || el.parentNode) as Element;
     } while (el !== null && el.nodeType === 1);
     return null;
   };

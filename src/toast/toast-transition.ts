@@ -1,7 +1,7 @@
 import {NgbTransitionStartFn} from '../util/transition/ngbTransition';
 import {reflow} from '../util/util';
 
-export const ngbToastFadeInTransition: NgbTransitionStartFn = (element: HTMLElement, animation: true) => {
+export const ngbToastFadeInTransition: NgbTransitionStartFn = (element: HTMLElement, animation: boolean) => {
   const {classList} = element;
 
   if (!animation) {

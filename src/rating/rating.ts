@@ -37,6 +37,7 @@ export interface StarTemplateContext {
  * A directive that helps visualising and interacting with a star rating bar.
  */
 @Component({
+  standalone: false,
   selector: 'ngb-rating',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,

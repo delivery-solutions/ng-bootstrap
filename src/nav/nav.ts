@@ -51,7 +51,7 @@ export interface NgbNavContentContext {
  *
  * @since 5.2.0
  */
-@Directive({selector: 'ng-template[ngbNavContent]'})
+@Directive({standalone: false, selector: 'ng-template[ngbNavContent]'})
 export class NgbNavContent {
   constructor(public templateRef: TemplateRef<any>) {}
 }
@@ -62,7 +62,7 @@ export class NgbNavContent {
  *
  * @since 5.2.0
  */
-@Directive({selector: '[ngbNavItem]', exportAs: 'ngbNavItem', host: {'[class.nav-item]': 'true'}})
+@Directive({standalone: false, selector: '[ngbNavItem]', exportAs: 'ngbNavItem', host: {'[class.nav-item]': 'true'}})
 export class NgbNavItem implements AfterContentChecked, OnInit {
   private _nav: NgbNav;
 
@@ -151,6 +151,7 @@ export class NgbNavItem implements AfterContentChecked, OnInit {
  * @since 5.2.0
  */
 @Directive({
+  standalone: false,
   selector: '[ngbNav]',
   exportAs: 'ngbNav',
   host: {
@@ -275,12 +276,13 @@ export class NgbNav implements AfterContentInit,
     }
   }
 
-  onKeyDown(event: KeyboardEvent) {
+  onKeyDown(event: Event) {
     if (this.roles !== 'tablist' || !this.keyboard) {
       return;
     }
+    const keyboardEvent = event as KeyboardEvent;
     /* eslint-disable-next-line deprecation/deprecation */
-    const key = event.which;
+    const key = keyboardEvent.which;
     const enabledLinks = this.links.filter(link => !link.navItem.disabled);
     const {length} = enabledLinks;
 
@@ -330,7 +332,7 @@ export class NgbNav implements AfterContentInit,
       }
       enabledLinks[position].elRef.nativeElement.focus();
 
-      event.preventDefault();
+      keyboardEvent.preventDefault();
     }
   }
 
@@ -390,6 +392,7 @@ export class NgbNav implements AfterContentInit,
  * @since 5.2.0
  */
 @Directive({
+  standalone: false,
   selector: 'a[ngbNavLink]',
   host: {
     '[id]': 'navItem.domId',

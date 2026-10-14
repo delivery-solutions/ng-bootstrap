@@ -29,7 +29,7 @@ import {Key} from '../util/key';
 import {NgbDropdownConfig} from './dropdown-config';
 import {FOCUSABLE_ELEMENTS_SELECTOR} from '../util/focus-trap';
 
-@Directive({selector: '.navbar'})
+@Directive({standalone: false, selector: '.navbar'})
 export class NgbNavbar {
 }
 
@@ -40,6 +40,7 @@ export class NgbNavbar {
  * @since 4.1.0
  */
 @Directive({
+  standalone: false,
   selector: '[ngbDropdownItem]',
   host: {'class': 'dropdown-item', '[class.disabled]': 'disabled', '[tabIndex]': 'disabled ? -1 : 0'}
 })
@@ -66,6 +67,7 @@ export class NgbDropdownItem {
  * A directive that wraps dropdown menu content and dropdown items.
  */
 @Directive({
+  standalone: false,
   selector: '[ngbDropdownMenu]',
   host: {
     '[class.dropdown-menu]': 'true',
@@ -103,7 +105,7 @@ export class NgbDropdownMenu {
  * @since 1.1.0
  */
 @Directive(
-    {selector: '[ngbDropdownAnchor]', host: {'class': 'dropdown-toggle', '[attr.aria-expanded]': 'dropdown.isOpen()'}})
+    {standalone: false, selector: '[ngbDropdownAnchor]', host: {'class': 'dropdown-toggle', '[attr.aria-expanded]': 'dropdown.isOpen()'}})
 export class NgbDropdownAnchor {
   nativeElement: HTMLElement;
   constructor(@Inject(forwardRef(() => NgbDropdown)) public dropdown, _elementRef: ElementRef<HTMLElement>) {
@@ -117,6 +119,7 @@ export class NgbDropdownAnchor {
  * You can also use `NgbDropdownAnchor` as an alternative.
  */
 @Directive({
+  standalone: false,
   selector: '[ngbDropdownToggle]',
   host: {
     'class': 'dropdown-toggle',
@@ -140,7 +143,7 @@ export class NgbDropdownToggle extends NgbDropdownAnchor {
 /**
  * A directive that provides contextual overlays for displaying lists of links and more.
  */
-@Directive({selector: '[ngbDropdown]', exportAs: 'ngbDropdown', host: {'[class.show]': 'isOpen()'}})
+@Directive({standalone: false, selector: '[ngbDropdown]', exportAs: 'ngbDropdown', host: {'[class.show]': 'isOpen()'}})
 export class NgbDropdown implements AfterContentInit, OnChanges, OnDestroy {
   static ngAcceptInputType_autoClose: boolean | string;
   static ngAcceptInputType_display: string;

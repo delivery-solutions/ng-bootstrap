@@ -12,12 +12,18 @@ export interface ResultTemplateContext {
   result: any;
 
   /**
+   * Formats a result for display.
+   */
+  formatter: (result: any) => string;
+
+  /**
    * Search term from the `<input>` used to get current result.
    */
   term: string;
 }
 
 @Component({
+  standalone: false,
   selector: 'ngb-typeahead-window',
   exportAs: 'ngbTypeaheadWindow',
   encapsulation: ViewEncapsulation.None,

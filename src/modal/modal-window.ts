@@ -23,6 +23,7 @@ import {ngbRunTransition, NgbTransitionOptions} from '../util/transition/ngbTran
 import {reflow} from '../util/util';
 
 @Component({
+  standalone: false,
   selector: 'ngb-modal-window',
   host: {
     '[class]': '"modal d-block" + (windowClass ? " " + windowClass : "")',

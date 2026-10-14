@@ -22,7 +22,7 @@ let nextId = 0;
  *
  * @deprecated 6.0.0 Please use NgbNav instead
  */
-@Directive({selector: 'ng-template[ngbTabTitle]'})
+@Directive({standalone: false, selector: 'ng-template[ngbTabTitle]'})
 export class NgbTabTitle {
   constructor(public templateRef: TemplateRef<any>) {}
 }
@@ -32,7 +32,7 @@ export class NgbTabTitle {
  *
  * @deprecated 6.0.0 Please use NgbNav instead
  */
-@Directive({selector: 'ng-template[ngbTabContent]'})
+@Directive({standalone: false, selector: 'ng-template[ngbTabContent]'})
 export class NgbTabContent {
   constructor(public templateRef: TemplateRef<any>) {}
 }
@@ -42,7 +42,7 @@ export class NgbTabContent {
  *
  * @deprecated 6.0.0 Please use NgbNav instead
  */
-@Directive({selector: 'ngb-tab'})
+@Directive({standalone: false, selector: 'ngb-tab'})
 export class NgbTab implements AfterContentChecked {
   /**
    * The tab identifier.
@@ -107,6 +107,7 @@ export interface NgbTabChangeEvent {
  * @deprecated 6.0.0 Please use NgbNav instead
  */
 @Component({
+  standalone: false,
   selector: 'ngb-tabset',
   exportAs: 'ngbTabset',
   encapsulation: ViewEncapsulation.None,

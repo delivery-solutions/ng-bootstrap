@@ -21,6 +21,7 @@ const FILTER_REGEX = /[^0-9]/g;
  * A directive that helps with wth picking hours, minutes and seconds.
  */
 @Component({
+  standalone: false,
   selector: 'ngb-timepicker',
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['./timepicker.scss'],

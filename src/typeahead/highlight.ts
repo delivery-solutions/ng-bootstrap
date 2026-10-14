@@ -10,6 +10,7 @@ import {regExpEscape, toString, removeAccents} from '../util/util';
  * Ex. `result="Alaska"` and `term="as"` will produce `Al<span class="ngb-highlight">as</span>ka`.
  */
 @Component({
+  standalone: false,
   selector: 'ngb-highlight',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,

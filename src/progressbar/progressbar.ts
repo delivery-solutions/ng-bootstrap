@@ -6,6 +6,7 @@ import {NgbProgressbarConfig} from './progressbar-config';
  * A directive that provides feedback on the progress of a workflow or an action.
  */
 @Component({
+  standalone: false,
   selector: 'ngb-progressbar',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,

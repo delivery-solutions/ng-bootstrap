@@ -41,61 +41,94 @@ export type DatepickerServiceInputs = Partial<{
 export class NgbDatepickerService {
   private _VALIDATORS:
       {[K in keyof DatepickerServiceInputs]: (v: DatepickerServiceInputs[K]) => Partial<DatepickerViewModel>| void} = {
-        dayTemplateData: (dayTemplateData: NgbDayTemplateData) => {
+        dayTemplateData: (dayTemplateData) => {
+          if (dayTemplateData === undefined) {
+            return;
+          }
           if (this._state.dayTemplateData !== dayTemplateData) {
             return {dayTemplateData};
           }
         },
-        displayMonths: (displayMonths: number) => {
+        displayMonths: (displayMonths) => {
+          if (displayMonths === undefined) {
+            return;
+          }
           displayMonths = toInteger(displayMonths);
           if (isInteger(displayMonths) && displayMonths > 0 && this._state.displayMonths !== displayMonths) {
             return {displayMonths};
           }
         },
-        disabled: (disabled: boolean) => {
+        disabled: (disabled) => {
+          if (disabled === undefined) {
+            return;
+          }
           if (this._state.disabled !== disabled) {
             return {disabled};
           }
         },
-        firstDayOfWeek: (firstDayOfWeek: number) => {
+        firstDayOfWeek: (firstDayOfWeek) => {
+          if (firstDayOfWeek === undefined) {
+            return;
+          }
           firstDayOfWeek = toInteger(firstDayOfWeek);
           if (isInteger(firstDayOfWeek) && firstDayOfWeek >= 0 && this._state.firstDayOfWeek !== firstDayOfWeek) {
             return {firstDayOfWeek};
           }
         },
-        focusVisible: (focusVisible: boolean) => {
+        focusVisible: (focusVisible) => {
+          if (focusVisible === undefined) {
+            return;
+          }
           if (this._state.focusVisible !== focusVisible && !this._state.disabled) {
             return {focusVisible};
           }
         },
-        markDisabled: (markDisabled: NgbMarkDisabled) => {
+        markDisabled: (markDisabled) => {
+          if (markDisabled === undefined) {
+            return;
+          }
           if (this._state.markDisabled !== markDisabled) {
             return {markDisabled};
           }
         },
-        maxDate: (date: NgbDate | null) => {
+        maxDate: (date) => {
+          if (date === undefined) {
+            return;
+          }
           const maxDate = this.toValidDate(date, null);
           if (isChangedDate(this._state.maxDate, maxDate)) {
             return {maxDate};
           }
         },
-        minDate: (date: NgbDate | null) => {
+        minDate: (date) => {
+          if (date === undefined) {
+            return;
+          }
           const minDate = this.toValidDate(date, null);
           if (isChangedDate(this._state.minDate, minDate)) {
             return {minDate};
           }
         },
-        navigation: (navigation: 'select' | 'arrows' | 'none') => {
+        navigation: (navigation) => {
+          if (navigation === undefined) {
+            return;
+          }
           if (this._state.navigation !== navigation) {
             return {navigation};
           }
         },
-        outsideDays: (outsideDays: 'visible' | 'collapsed' | 'hidden') => {
+        outsideDays: (outsideDays) => {
+          if (outsideDays === undefined) {
+            return;
+          }
           if (this._state.outsideDays !== outsideDays) {
             return {outsideDays};
           }
         },
-        weekdays: (weekdays: boolean | TranslationWidth) => {
+        weekdays: (weekdays) => {
+          if (weekdays === undefined) {
+            return;
+          }
           const weekdayWidth = weekdays === true || weekdays === false ? TranslationWidth.Short : weekdays;
           const weekdaysVisible = weekdays === true || weekdays === false ? weekdays : true;
           if (this._state.weekdayWidth !== weekdayWidth || this._state.weekdaysVisible !== weekdaysVisible) {

@@ -105,7 +105,7 @@ export interface NgbDatepickerState {
  *
  * @since 5.3.0
  */
-@Directive({selector: 'ng-template[ngbDatepickerContent]'})
+@Directive({standalone: false, selector: 'ng-template[ngbDatepickerContent]'})
 export class NgbDatepickerContent {
   constructor(public templateRef: TemplateRef<any>) {}
 }
@@ -116,6 +116,7 @@ export class NgbDatepickerContent {
  * `NgbDatepicker` is meant to be displayed inline on a page or put inside a popup.
  */
 @Component({
+  standalone: false,
   exportAs: 'ngbDatepicker',
   selector: 'ngb-datepicker',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -509,6 +510,7 @@ export class NgbDatepicker implements AfterViewInit,
  * @since 5.3.0
  */
 @Component({
+  standalone: false,
   selector: 'ngb-datepicker-month',
   host: {'role': 'grid', '(keydown)': 'onKeyDown($event)'},
   encapsulation: ViewEncapsulation.None,
